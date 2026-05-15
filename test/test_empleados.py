@@ -10,21 +10,21 @@ class Test_empleados(unittest.TestCase):
 
     def test_insertar_y_consultar_empleados(self):
         empleado_prueba = empleados(
-            fecha_ingreso = datetime.date(2020, 1, 1),
-            fecha_salida = datetime.date(2021, 1, 1),
-            salario = 2000000,
-            cesantias = 100000,
-            interes_cesantias = 5000,
-            prima_servicios = 150000,
-            vacaciones = 20000,
-            pago_neto = 2150000
+            fecha_ingreso = datetime.date(2026, 1, 1),
+            fecha_salida = datetime.date(2026, 12, 31),
+            salario = 1_750_905,
+            cesantias = 1_750_905,
+            interes_cesantias = 210_109,
+            prima_servicios = 1_750_905,
+            vacaciones = 875_453,
+            pago_neto = 4_587_371
         )
 
         controlador.insertar(empleado_prueba)
 
-        
+        empleado_buscado = controlador.buscar_salario(empleado_prueba.salario)
 
-        self.assertEqual(empleado_prueba.salario, 2000000)
+        self.assertTrue(empleado_prueba.is_equal(empleado_buscado))
 
         
 if __name__ == "__main__":

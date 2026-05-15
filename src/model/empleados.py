@@ -11,4 +11,14 @@ class empleados:
         self.vacaciones = vacaciones
         self.pago_neto = pago_neto
     
+    def is_equal(self, otro) -> bool:
+        assert (self.fecha_ingreso     ==    otro.fecha_ingreso)
+        assert (self.fecha_salida      ==    otro.fecha_salida)
+        assert (self.salario           ==    otro.salario)
+        assert (self.cesantias         ==    otro.cesantias)
+        assert (self.interes_cesantias ==    otro.interes_cesantias)
+        assert (self.prima_servicios   ==    otro.prima_servicios)
+        assert (self.vacaciones        ==    otro.vacaciones)
+        assert (self.pago_neto         ==    otro.pago_neto)
+        return True
     
