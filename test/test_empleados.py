@@ -7,6 +7,13 @@ from controller.empleado_controller import controlador
 from model.empleados import empleados
 
 class Test_empleados(unittest.TestCase):
+    
+    @classmethod
+    def setUpClass(cls):
+        controlador.borrar_tabla()
+        controlador.crear_tabla()
+
+
 
     def test_insertar_y_consultar_empleados(self):
         empleado_prueba = empleados(
