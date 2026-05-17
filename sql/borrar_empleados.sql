@@ -1,1 +1,1 @@
-drop table if exist empleados;
+DROP TABLE IF EXISTS empleados;

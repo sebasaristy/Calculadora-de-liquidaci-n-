@@ -46,7 +46,9 @@ class controlador:
 
         fecha_ingreso_bd = logicaLiquidacion.convertir_fecha(empleado.fecha_ingreso).strftime("%Y-%m-%d")
         fecha_salida_bd = logicaLiquidacion.convertir_fecha(empleado.fecha_salida).strftime("%Y-%m-%d")
-
+        
+        logicaLiquidacion.validar_rango_fechas(logicaLiquidacion.convertir_fecha(empleado.fecha_ingreso), logicaLiquidacion.convertir_fecha(empleado.fecha_salida))
+        
         sql = f""" INSERT INTO empleados (fecha_ingreso, fecha_salida, salario, cesantias, interes_cesantias, vacaciones, prima_servicios, pago_neto) 
                 VALUES ('{fecha_ingreso_bd}', '{fecha_salida_bd}', {empleado.salario}, {empleado.cesantias}, {empleado.interes_cesantias}, {empleado.vacaciones}, {empleado.prima_servicios}, {empleado.pago_neto}) """
         
@@ -62,7 +64,7 @@ class controlador:
         cursor.execute(consulta)
 
         fila = cursor.fetchone()
-        saldo = empleados(fecha_ingreso=fila[0], fecha_salida=fila[1], salario=fila[2], cesantias=fila[3], interes_cesantias=fila[4], vacaciones=fila[5], prima_servicios=fila[6], pago_neto=fila[7])
+        saldo = empleados(fecha_ingreso=fila[0].strftime("%d/%m/%Y"), fecha_salida=fila[1].strftime("%d/%m/%Y"), salario=fila[2], cesantias=fila[3], interes_cesantias=fila[4], vacaciones=fila[5], prima_servicios=fila[6], pago_neto=fila[7])
 
         return saldo
     
@@ -80,6 +82,6 @@ class controlador:
         cursor.execute(consulta)
         fila = cursor.fetchone()
 
-        saldo = empleados(fecha_ingreso=fila[0], fecha_salida=fila[1], salario=fila[2], cesantias=fila[3], interes_cesantias=fila[4], vacaciones=fila[5], prima_servicios=fila[6], pago_neto=fila[7])
+        saldo = empleados(fecha_ingreso=fila[0].strftime("%d/%m/%Y"), fecha_salida=fila[1].strftime("%d/%m/%Y"), salario=fila[2], cesantias=fila[3], interes_cesantias=fila[4], vacaciones=fila[5], prima_servicios=fila[6], pago_neto=fila[7])
 
         return saldo
