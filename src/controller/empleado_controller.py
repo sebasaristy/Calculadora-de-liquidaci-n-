@@ -59,7 +59,7 @@ class controlador:
         cursor = controlador.obtener_cursor()
 
         consulta = f""" SELECT fecha_ingreso, fecha_salida, salario, cesantias, interes_cesantias, vacaciones, prima_servicios, pago_neto
-            FROM public.empleados WHERE salario = 1750905; """
+            FROM public.empleados WHERE salario = {salario}; """
         
         cursor.execute(consulta)
 
