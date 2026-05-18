@@ -203,5 +203,20 @@ Calculadora-de-liquidaci-n-/
 │
 └── README.md
 ```
+## 5. Bases de datos
 
----
+Instale el paquete psycopg2 con:
+
+    pip install psycopg2
+    
+Asegurese de tener una base de datos PostgreSQL y sus respectivos datos de acceso
+
+Copie el archivo secret_config_sample.py como secret_config.py y establezca en este archivo los
+datos de conexion a su base de datos.
+
+### Configuración de la base de datos
+
+Esta aplicacion requiere que este creada una tabla llamada empleados.
+
+Utilice el script en sql\crear_empleados.sql para crear antes de ejecutar la aplicacion
+o las pruebas unitarias para que se creen las tablas necesarias
