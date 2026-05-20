@@ -4,8 +4,8 @@ from flask import render_template
 app = Flask(__name__)
 
 #Por cada ruta que vayamos a atender en el navegador, creamos una funcion en Python
-@app.route("/") #El decordador indica la ruta que llama a esta funcion
 
+@app.route("/") #El decordador indica la ruta que llama a esta funcion
 def tim():
     return render_template("aristi_ht.html")
 
