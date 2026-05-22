@@ -1,0 +1,35 @@
+<div style="min-height: 320px; background: rgba(0,0,0,0.45); display: flex; align-items: center; justify-content: center; border-radius: 12px;">
+  <div style="background: white; border-radius: 12px; border: 0.5px solid #e0e0e0; width: 420px; overflow: hidden; font-family: sans-serif;">
+
+    <!-- Barra de título -->
+    <div style="background: #A32D2D; padding: 14px 18px; display: flex; align-items: center; gap: 10px;">
+      <span style="font-size: 20px;">⚠️</span>
+      <span style="font-size: 15px; font-weight: 500; color: #FCEBEB;">Error de fecha</span>
+    </div>
+
+    <!-- Cuerpo del mensaje -->
+    <div style="padding: 20px 20px 8px;">
+      <div style="display: flex; gap: 12px; align-items: flex-start;">
+        <span style="font-size: 22px; flex-shrink: 0; margin-top: 2px;">📅</span>
+        <div>
+          <p style="margin: 0 0 10px; font-size: 14px; line-height: 1.6; color: #1a1a1a;">
+            La fecha de retiro no puede ser anterior a la de ingreso o se ingresó una fecha inexistente.
+          </p>
+          <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #555;">
+            Ingrese una fecha de retiro válida, posterior a la fecha de ingreso.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botón Aceptar -->
+    <div style="padding: 14px 20px 18px; display: flex; justify-content: flex-end;">
+      <button onclick="window.location.href='templates/calculadora_ht.html'"            
+        style="background: #A32D2D; color: #FCEBEB; border: none; border-radius: 8px;
+               padding: 8px 22px; font-size: 14px; font-weight: 500; cursor: pointer;">
+        Aceptar
+      </button>
+    </div>
+
+  </div>
+</div>
