@@ -20,11 +20,50 @@ blueprint = Blueprint("vista_usuarios", __name__, "templates")
 def ingresar_datos():
     return render_template("calculadora_ht.html")
 
+
 @blueprint.route("/crear_tabla")
 def crear_tabla():
     empleado_controller.controlador.crear_tabla()
     return 'Tabla creada exitosamente. <br><a href="/">Volver a la página principal</a>'
 
+
+@blueprint.route("/buscar_ht")
+def buscar_fecha():
+    fecha_ingreso = request.args.get("fecha_ingreso")
+    fecha_retiro = request.args.get("fecha_retiro")
+    try:
+        resultado = empleado_controller.controlador.buscar_por_fechas(fecha_ingreso, fecha_retiro)
+
+        if resultado is None:
+            return render_template("no_encontrado.html")
+        else:
+            return render_template("resultado_busqueda.html", resultado=resultado)
+
+    except errores.ErrorFechaFormatoIncorrecto:
+        return render_template("error_fecha.html")
+    
+    except errores.ErrorFechaIncorrecta:
+        return render_template("error_fecha.html")
+    
+
+@blueprint.route("/buscar_ht")
+def buscar_salario():
+    fecha_ingreso = request.args.get("fecha_ingreso")
+    fecha_retiro = request.args.get("fecha_retiro")
+    try:
+        resultado = empleado_controller.controlador.buscar_por_fechas(fecha_ingreso, fecha_retiro)
+
+        if resultado is None:
+            return render_template("no_encontrado.html")
+        else:
+            return render_template("resultado_busqueda.html", resultado=resultado)
+
+    except errores.ErrorFechaFormatoIncorrecto:
+        return render_template("error_fecha.html")
+    
+    except errores.ErrorFechaIncorrecta:
+        return render_template("error_fecha.html")
+    
 
 @blueprint.route("/calcular_ht")
 def calcular():
