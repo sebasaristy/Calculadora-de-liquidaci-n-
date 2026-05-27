@@ -1,29 +1,32 @@
-from flask import Flask
+from flask import Blueprint
 from flask import render_template, request
+
 import sys
 sys.path.append("src")
 
 from model import logicaLiquidacion
 from model import errores
-from controller import empleado_controller
 from model import empleados
 
+from controller import empleado_controller
+
+
 # Crear un instancia de Flask que sera nuestra aplicacion
-app = Flask(__name__)
+blueprint = Blueprint("vista_usuarios", __name__, "templates")
 
 #Por cada ruta que vayamos a atender en el navegador, creamos una funcion en Python
 
-@app.route("/") #El decordador indica la ruta que llama a esta funcion
+@blueprint.route("/") #El decordador indica la ruta que llama a esta funcion
 def ingresar_datos():
     return render_template("calculadora_ht.html")
 
-@app.route("/crear_tabla")
+@blueprint.route("/crear_tabla")
 def crear_tabla():
     empleado_controller.controlador.crear_tabla()
     return 'Tabla creada exitosamente. <br><a href="/">Volver a la página principal</a>'
 
 
-@app.route("/calcular_ht")
+@blueprint.route("/calcular_ht")
 def calcular():
     fecha_ingreso = request.args.get("fecha_ingreso")
     fecha_retiro = request.args.get("fecha_retiro")
@@ -62,4 +65,3 @@ def calcular():
 
 
 
-app.run(debug=True)
