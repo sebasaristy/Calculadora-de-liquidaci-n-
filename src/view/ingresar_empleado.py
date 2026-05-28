@@ -7,8 +7,9 @@ from model.empleados import empleados
 import datetime
 
 try: 
-    empleado = empleados(fecha_ingreso="",fecha_salida="",salario=0,cesantias=0,interes_cesantias=0,prima_servicios=0, vacaciones = 0, pago_neto = 0)
+    empleado = empleados(cedula = "", fecha_ingreso="",fecha_salida="",salario=0,cesantias=0,interes_cesantias=0,prima_servicios=0, vacaciones = 0, pago_neto = 0)
 
+    empleado.cedula = input("Cedula: ")
     empleado.fecha_ingreso = input("Fecha ingreso (DD/MM/AAAA): ")
     empleado.fecha_salida = input("Fecha salida (DD/MM/AAAA): ")
     empleado.salario = int(input("SMMLV: "))

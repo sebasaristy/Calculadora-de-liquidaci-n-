@@ -18,6 +18,7 @@ class Test_empleados(unittest.TestCase):
 
     def test_insertar_y_consultar_empleados_caso_normal_1(self):
         empleado_prueba = empleados(
+            cedula = "123456789",
             fecha_ingreso = "01/01/2026",
             fecha_salida = "31/12/2026",
             salario = 1_750_905,
@@ -36,6 +37,7 @@ class Test_empleados(unittest.TestCase):
 
     def test_insertar_y_consultar_empleado_caso_normal_2(self):
         empleado_prueba = empleados(
+            cedula = "987654321",
             fecha_ingreso = "01/01/2026",
             fecha_salida = "01/06/2026",
             salario = 3_501_810,
@@ -56,19 +58,20 @@ class Test_empleados(unittest.TestCase):
         fecha_ingreso = "28/03/2026"
         fecha_salida = "10/04/2025"
 
-        empleado = empleados(fecha_ingreso = fecha_ingreso, fecha_salida = fecha_salida, salario = 1_750_905, cesantias = 0, interes_cesantias=0, vacaciones = 0, prima_servicios= 0, pago_neto=0)
+        empleado = empleados(cedula = "123456789", fecha_ingreso = fecha_ingreso, fecha_salida = fecha_salida, salario = 1_750_905, cesantias = 0, interes_cesantias=0, vacaciones = 0, prima_servicios= 0, pago_neto=0)
 
         with self.assertRaises(errores.ErrorFechaIncorrecta):
             controlador.insertar(empleado)
     
     def test_insertar_fecha_inexistente(self):
-        empleado = empleados(fecha_ingreso="32/04/2026", fecha_salida="1/05/2026", salario = 5_252_715, cesantias=0, interes_cesantias=0, vacaciones=0, prima_servicios=0, pago_neto=0)
+        empleado = empleados(cedula = "123456789", fecha_ingreso="32/04/2026", fecha_salida="1/05/2026", salario = 5_252_715, cesantias=0, interes_cesantias=0, vacaciones=0, prima_servicios=0, pago_neto=0)
 
         with self.assertRaises(errores.ErrorFechaFormatoIncorrecto):
             controlador.insertar(empleado)
 
     def test_buscar_fecha(self):
         empleado_prueba = empleados(
+            cedula = "567491275",
             fecha_ingreso = "01/08/2026",
             fecha_salida = "31/08/2026",
             salario = 5_050_000,

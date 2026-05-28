@@ -67,6 +67,7 @@ def buscar_salario():
 
 @blueprint.route("/calcular_ht")
 def calcular():
+    cedula = request.args.get("cedula")
     fecha_ingreso = request.args.get("fecha_ingreso")
     fecha_retiro = request.args.get("fecha_retiro")
     salario = int(request.args.get("salario_mensual"))
@@ -80,6 +81,7 @@ def calcular():
         pago_neto = logicaLiquidacion.calcular_pago_neto(float(cesantias), float(intereses_cesantias), float(vacaciones), float(prima_servicios))
 
         empleado_prueba = empleado_controller.empleados(
+            cedula = cedula,
             fecha_ingreso = fecha_ingreso,
             fecha_salida = fecha_retiro,
             salario = salario,
@@ -92,7 +94,7 @@ def calcular():
 
         empleado_controller.controlador.insertar(empleado_prueba)
     
-        return render_template("calcular_ht.html", dias_trabajados=dias_trabajados, cesantias=round(cesantias, 2), intereses_cesantias=round(intereses_cesantias, 2), vacaciones=round(vacaciones, 2), prima_servicios=round(prima_servicios, 2), pago_neto=round(pago_neto, 2))
+        return render_template("calcular_ht.html", cedula= cedula, dias_trabajados=dias_trabajados, cesantias=round(cesantias, 2), intereses_cesantias=round(intereses_cesantias, 2), vacaciones=round(vacaciones, 2), prima_servicios=round(prima_servicios, 2), pago_neto=round(pago_neto, 2))
     
     except errores.ErrorFechaIncorrecta:
         return render_template("error_fecha.html")

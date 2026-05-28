@@ -1,4 +1,5 @@
 create table empleados(
+    cedula varchar(20) primary key,
     fecha_ingreso DATE not NULL,
     fecha_salida DATE not NULL,
     salario int not null,
