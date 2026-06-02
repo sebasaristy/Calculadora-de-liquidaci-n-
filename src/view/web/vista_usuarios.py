@@ -28,25 +28,6 @@ def crear_tabla():
 
 
 @blueprint.route("/buscar_ht")
-def buscar_fecha():
-    fecha_ingreso = request.args.get("fecha_ingreso")
-    fecha_retiro = request.args.get("fecha_retiro")
-    try:
-        resultado = empleado_controller.controlador.buscar_por_fechas(fecha_ingreso, fecha_retiro)
-
-        if resultado is None:
-            return render_template("no_encontrado.html")
-        else:
-            return render_template("resultado_busqueda.html", resultado=resultado)
-
-    except errores.ErrorFechaFormatoIncorrecto:
-        return render_template("error_fecha.html")
-    
-    except errores.ErrorFechaIncorrecta:
-        return render_template("error_fecha.html")
-    
-
-@blueprint.route("/buscar_ht")
 def buscar_salario():
     fecha_ingreso = request.args.get("fecha_ingreso")
     fecha_retiro = request.args.get("fecha_retiro")
@@ -64,6 +45,19 @@ def buscar_salario():
     except errores.ErrorFechaIncorrecta:
         return render_template("error_fecha.html")
     
+@blueprint.route("/buscar_cedula")
+def buscar_cedula():
+    cedula = request.args.get("cedula")
+
+    if cedula is None or cedula.strip() == "":
+        return render_template("no_encontrado.html", mensaje="Debe ingresar una cedula.")
+
+    resultado = empleado_controller.controlador.buscar_por_cedula(cedula)
+
+    if resultado is None:
+        return render_template("no_encontrado.html", mensaje="No se encontro ningun empleado con esa cedula.")
+
+    return render_template("resultado_busqueda.html", resultado=resultado)
 
 @blueprint.route("/calcular_ht")
 def calcular():

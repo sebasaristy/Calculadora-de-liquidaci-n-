@@ -89,7 +89,7 @@ class controlador:
     def buscar_por_cedula(cedula: str) -> empleados:
         cursor = controlador.obtener_cursor()
 
-        consulta = f"""SELECT fecha_ingreso, fecha_salida, salario, cesantias, interes_cesantias, vacaciones, prima_servicios, pago_neto
+        consulta = f"""SELECT cedula, fecha_ingreso, fecha_salida, salario, cesantias, interes_cesantias, vacaciones, prima_servicios, pago_neto
                     FROM public.empleados 
                     WHERE cedula = '{cedula}';"""
 
